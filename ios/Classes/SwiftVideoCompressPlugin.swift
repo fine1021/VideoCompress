@@ -136,10 +136,7 @@ public class SwiftVideoCompressPlugin: NSObject, FlutterPlugin {
     
     @objc private func updateProgress(timer:Timer) {
         let asset = timer.userInfo as! AVAssetExportSession
-        print("===status====")
         if(!stopCommand) {
-            print("status:",asset.status.rawValue)
-            print("asset.progress=",asset.progress * 100);
             channel.invokeMethod("updateProgress", arguments: "\(String(describing: asset.progress * 100))")
         }
     }
